@@ -63,4 +63,54 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
+
+app.get("/janken2", (req, res) => {
+  // ① ブラウザから送信されたデータを取得
+  let hand = req.query.hand;
+  let win = Number(req.query.win);
+  let total = Number(req.query.total);
+
+  // ② コンピュータの手をランダムに決める
+  const num = Math.floor(Math.random() * 3 + 1);
+  let cpu = "";
+
+  if (num == 1) cpu = "グー";
+  else if (num == 2) cpu = "チョキ";
+  else cpu = "パー";
+
+  // ③ 勝敗を判定する
+  let judgement = "";
+
+  if (hand == cpu) {
+    judgement = "あいこ";
+  }
+  else if (
+    (hand == "グー" && cpu == "チョキ") ||
+    (hand == "チョキ" && cpu == "パー") ||
+    (hand == "パー" && cpu == "グー")
+  ) {
+    judgement = "勝ち";
+    win += 1;
+  }
+  else {
+    judgement = "負け";
+  }
+
+  // ④ 試合数を1増やす
+  total += 1;
+
+  // ⑤ 結果画面に渡すデータ
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total
+  };
+
+  // ⑥ janken2.ejsを表示
+  res.render("janken2", display);
+});
+
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
