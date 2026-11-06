@@ -141,5 +141,15 @@ app.get("/janken2", (req, res) => {
   res.render("janken2", display);
 });
 
+let agents = [
+  { id: 1, name: "ジェット", role: "デュエリスト" },
+  { id: 2, name: "ソーヴァ", role: "イニシエーター" },
+  { id: 3, name: "オーメン", role: "コントローラー" },
+  { id: 4, name: "セージ", role: "センチネル" }
+];
+
+app.get("/valorant", (req, res) => {
+  res.render("valorant", { data: agents });
+});
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
