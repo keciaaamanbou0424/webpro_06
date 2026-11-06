@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>VALORANT エージェント追加</title>
+</head>
+<body>
+  <h2>エージェント新規登録</h2>
+
+  <form action="/valorant_add" method="get">
+    <label for="id">ID</label>
+    <input type="number" name="id" id="id" required>
+    <br>
+
+    <label for="name">エージェント名</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+
+    <p>ロール</p>
+
+    <label>
+      <input type="radio" name="role" value="デュエリスト" required>
+      デュエリスト
+    </label>
+
+    <label>
+      <input type="radio" name="role" value="イニシエーター">
+      イニシエーター
+    </label>
+
+    <label>
+      <input type="radio" name="role" value="コントローラー">
+      コントローラー
+    </label>
+
+    <label>
+      <input type="radio" name="role" value="センチネル">
+      センチネル
+    </label>
+
+    <br>
+    <input type="submit" value="登録">
+  </form>
+</body>
+</html>

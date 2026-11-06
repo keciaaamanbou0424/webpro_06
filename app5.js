@@ -152,4 +152,20 @@ app.get("/valorant", (req, res) => {
   res.render("valorant", { data: agents });
 });
 
+app.get("/valorant_add", (req, res) => {
+  let id = Number(req.query.id);
+  let name = req.query.name;
+  let role = req.query.role;
+
+  let newdata = {
+    id: id,
+    name: name,
+    role: role
+  };
+
+  agents.push(newdata);
+
+  res.redirect("/valorant");
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
